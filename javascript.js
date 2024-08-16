@@ -12,10 +12,15 @@ let createCanvas = (dimension) => {
         rowDiv.classList.add("row");
         for(let j = 0; j < dimension; ++j){
             const square = document.createElement("div");
-            square.style["background-color"] = "red";
+            square.style["background-color"] = "black";
+            square.style["opacity"] = "0"
             square.style["flex"] = "1 1 0px";
+            square.className = "0"; 
             square.addEventListener("mouseover", () => {
-                square.style["background-color"] = "blue";
+                if(Number(square.className) < 1){
+                    square.className = Number(square.className) + 0.1;
+                    square.style["opacity"] = square.className;
+                }
             });
             rowDiv.appendChild(square);
         }
